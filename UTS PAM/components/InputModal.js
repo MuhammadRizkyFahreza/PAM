@@ -1,5 +1,7 @@
 import React from "react";
-import { Modal } from "react-native";
+import { Modal, Text } from "react-native";
+
+//Import style
 
 import {
     ModalButton,
@@ -10,7 +12,9 @@ import {
     ModalIcon,
     StyledInput,
     HeaderTitle,
-    colors
+    colors,
+    ModalTextButton,
+    TextButton
 } from '../styles/appStyles';
 
 //Icon
@@ -32,7 +36,7 @@ const InputModal = ({
     const handleSubmit = () => {
         handleAddTodo({
             title: todoInputValues,
-            date: new Date().toUTCString(),
+            date: new Date().toLocaleString(),
             key: `${(todos[todos.length-1] && parseInt(todos[todos.length -1].key) + 1) || 1}`
         });
         setTodoInputValues("");
@@ -44,6 +48,9 @@ const InputModal = ({
             <ModalButton onPress={() => {setModalVisible(true)}}>
                 <FontAwesome name="plus" size={32} color={colors.secondary} />
             </ModalButton>
+            <ModalTextButton onPress={() => {setModalVisible(true)}}>
+                <TextButton color={colors.tertiary}>Tambahkan List Kegiatan</TextButton>
+            </ModalTextButton>
 
             <Modal
                 animationType="slide"
@@ -59,9 +66,8 @@ const InputModal = ({
                         </ModalIcon>
 
                         <StyledInput
-                            placeholder="Add a todo"
-                            placeholderTextColor={colors.alternative}
-                            selectionColor={colors.secondary}
+                            placeholder="Tambahkan Daftar Kegiatan"
+                            placeholderTextColor={colors.secondary}
                             autoFocus={true}
                             onChangeText={(text) => setTodoInputValues(text)}
                             value={todoInputValues}

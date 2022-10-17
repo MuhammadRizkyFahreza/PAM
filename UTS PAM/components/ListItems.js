@@ -10,21 +10,17 @@ import {
     TodoText,
     TodoDate,
     HiddenButton,
-    SwipedTodoText,
     colors
 } from '.././styles/appStyles';
 
 import { MaterialIcons } from '@expo/vector-icons';
 
 const ListItems = ({todos, setTodos}) => {
-    
-    const [swipedRow, setSwipedRow] = useState(null);
 
     const handleDeleteTodo = (rowMap, rowKey) => {
         const newTodos = [...todos];
         const todoIndex = todos.findIndex((todo) => todo.key === rowKey);
         newTodos.splice(todoIndex, 1);
-
         AsyncStorage.setItem("storedTodos", JSON.stringify(newTodos)).then(() => {
             setTodos(newTodos);
         }).catch(error => console.log(error));
@@ -32,20 +28,14 @@ const ListItems = ({todos, setTodos}) => {
     
     return (
         <>
-        {todos.length == 0 && <TodoText> You Have No Todos</TodoText>}
+        {todos.length == 0 && <TodoText>Kamu sedang tidak ada kegiatan</TodoText>}
         {todos.length != 0 && <SwipeListView 
             data={todos}
             renderItem={(data) => {
-                const RowText = data.item.key == swipedRow ? SwipedTodoText : TodoText;
                 return (
-                    <ListView 
-                        underlaycColor={colors.primary}
-                        onPress={() => {
-
-                        }}
-                    >
+                    <ListView>
                         <>
-                            <RowText>{data.item.title}</RowText>
+                            <TodoText>{data.item.title}</TodoText>
                             <TodoDate>{data.item.date}</TodoDate>
                         </>
                     </ListView>
@@ -63,22 +53,8 @@ const ListItems = ({todos, setTodos}) => {
                 )
                 
             }}
-            leftOpenValue={80}
-            previewRowKey={"1"}
-            previewOpenValue={80}
-            previewOpenDelay={3000}
+            leftOpenValue={60}
             disableLeftSwipe={true}
-            showsVerticalScrollIndicator={false}
-            style={{
-                flex: 1, paddingBottom: 30, marginBottom: 40
-            }}
-
-            onRowOpen={(rowKey) => {
-                setSwipedRow(rowKey);
-            }}
-            onRowClose={() => {
-                setSwipedRow(null);
-            }}
         />}
         </>
     );

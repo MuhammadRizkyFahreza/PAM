@@ -13,11 +13,9 @@ const Header = ({handleClearTodos}) => {
         <HeaderView>
             <HeaderTitle>To-Do.</HeaderTitle>
             <HeaderButton
-                onPress={handleClearTodos} 
-            >
-                <MaterialCommunityIcons name="playlist-remove" size={35} color={colors.tertiary} />
+                onPress={handleClearTodos} >
+                    <MaterialCommunityIcons name="playlist-remove" size={35} color={colors.tertiary} />
             </HeaderButton>
-            
         </HeaderView>
     );
 }

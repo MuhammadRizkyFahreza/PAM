@@ -1,12 +1,4 @@
 import styled from "styled-components/native";
-import {
-  Text,
-  View,
-  TouchableOpacity,
-  TouchableHighlight,
-  SafeAreaView,
-  TextInput,
-} from "react-native";
 import Constants from "expo-constants";
 
 // Colors
@@ -33,36 +25,25 @@ export const HeaderView = styled.View`
   margin-bottom: 10px;
   flex-direction: row;
   justify-content: space-between;
-  align-items: center;
 `;
 
 export const HeaderTitle = styled.Text`
   font-size: 35px;
   font-weight: bold;
   color: ${colors.tertiary};
-  letter-spacing: 2px;
-  font-style: italic;
+  letter-spacing: 4px;
 `;
 export const HeaderButton = styled.TouchableOpacity`
-  font-weight: bold;
   color: ${colors.tertiary};
 `;
 
 // List
-export const ListContainer = styled.View`
-  margin-bottom: 30px;
-  flex: 1;
-  padding-bottom: 40px;
-`;
-
-export const ListView = styled.TouchableHighlight`
+export const ListView = styled.View`
   background-color: ${colors.secondary};
   min-height: 85px;
   width: 100%;
-  padding: 15px;
-  justify-content: space-around;
-  margin-bottom: 15px;
-  border-radius: 10px;
+  padding: 10px;
+  margin-bottom: 20px;
 `;
 
 export const ListViewHidden = styled.View`
@@ -73,33 +54,25 @@ export const ListViewHidden = styled.View`
   justify-content: center;
   align-items: flex-start;
   margin-bottom: 15px;
-  border-radius: 11px;
 `;
 
 export const HiddenButton = styled.TouchableOpacity`
   width: 55px;
-  align-items: center;
+  allign-items: center;
 `;
 
 export const TodoText = styled.Text`
-  font-size: 16px;
+  font-size: 22px;
   letter-spacing: 1px;
   color: ${colors.tertiary};
 `;
 
 export const TodoDate = styled.Text`
-  font-size: 10px;
+  font-size: 14px;
   letter-spacing: 1px;
   color: ${colors.alternative};
   text-align: right;
   text-transform: uppercase;
-`;
-
-// Text for swiped todo row
-export const SwipedTodoText = styled(TodoText)`
-  color: ${colors.alternative};
-  font-style: italic;
-  text-decoration: line-through;
 `;
 
 // Modal
@@ -110,10 +83,31 @@ export const ModalButton = styled.TouchableOpacity`
   border-radius: 50px;
   justify-content: center;
   align-items: center;
-  align-self: center;
+  align-self: flex-end;
   position: absolute;
+  right: 40px
   bottom: 40px;
 `;
+
+export const ModalTextButton = styled.TouchableOpacity`
+  width: 240px;
+  height: 70px;
+  background-color: ${colors.tertiary};
+  border-radius: 50px;
+  justify-content: center;
+  align-items: center;
+  align-self: flex-start;
+  position: absolute;
+  left: 40px
+  bottom: 40px;
+`;
+
+export const TextButton = styled.Text`
+  font-size: 12px;
+  letter-spacing: 1px;
+  color: ${colors.secondary};
+`;
+
 
 export const ModalContainer = styled.View`
   padding: 20px;
@@ -123,9 +117,10 @@ export const ModalContainer = styled.View`
   background-color: ${colors.primary};
 `;
 
+
 export const ModalView = styled.View`
   background-color: ${colors.secondary};
-  border-radius: 20px;
+  border-radius: 0px;
   padding: 35px;
 `;
 
